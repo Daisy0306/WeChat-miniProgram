@@ -1,0 +1,62 @@
+<!-- 主页上方轮播图 -->
+<swiper class="banner-wrapper" indicator-dots indicator-color="white" indicator-active-color="rgba(0,0,0,.5)" circular>
+  <swiper-item class="slideshow" wx:for="{{bannerList}}" wx:key="bannerId" wx:for-item="bannerItem">
+    <image src="{{bannerItem.pic}}"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 导航区域 -->
+<view class="nav-wrapper">
+  <view class="nav-item">
+    <text class="iconfont icon-meirituijian-"></text>
+    <text class="desc">每日推荐</text>
+  </view>
+  <view class="nav-item">
+    <text class="iconfont icon-gedan1"></text>
+    <text class="desc">歌单</text>
+  </view>
+  <view class="nav-item">
+    <text class="iconfont icon-icon-ranking"></text>
+    <text class="desc">排行榜</text>
+  </view>
+  <view class="nav-item">
+    <text class="iconfont icon-diantai"></text>
+    <text class="desc">电台</text>
+  </view>
+  <view class="nav-item">
+    <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
+    <text class="desc">直播</text>
+  </view>
+</view>
+
+<!-- 歌曲推荐区域 -->
+<view class="recommend-wrapper">
+  <!-- 头部导航区域 -->
+  <NavHeader title="推荐歌曲" contentTitle="为你精心推荐"/>
+  <scroll-view class="recommendScroll" enable-flex scroll-x>
+    <view wx:for="{{recommendList}}" wx:key="id" wx:for-item="recommendItem">
+      <image src="{{recommendItem.picUrl}}"></image>
+      <text class="desc">{{recommendItem.name}}</text>
+    </view>  
+  </scroll-view>
+</view>
+
+<!-- 排行榜区域 -->
+<view class="ranklist-wrapper">
+  <!-- 头部导航区域 -->
+  <NavHeader title="排行榜" contentTitle="热歌风向标"/>
+  <!-- 轮播区域 -->
+  <swiper class="ranklist-banner" next-margin="50rpx">
+    <swiper-item wx:for="{{rankList}}" wx:key="name" wx:for-item="rankItem">
+        <view class="ranklist-name">{{rankItem.name}} <text decode>&gt;</text></view>
+        <view class="ranklist-lists">
+          <view class="ranklist-item" wx:for="{{rankItem.tracks}}" wx:key="id" wx:for-item="musicItem" wx:for-index="musicIndex">
+            <image class="item-pic" src="{{musicItem.al.picUrl}}" lazy-load></image>
+            <text class="item-index">{{musicIndex + 1}}</text>
+            <text class="item-desc">{{musicItem.name}}</text>
+          </view>
+        </view>       
+    </swiper-item>
+  </swiper>
+</view>
+
