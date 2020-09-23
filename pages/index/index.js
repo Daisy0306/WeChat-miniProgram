@@ -49,7 +49,7 @@ Page({
           tracks:res.playlist.tracks.slice(0,3)
         }
         topList.push(data);
-        console.log(topList);
+        //console.log(topList);
         this.setData({
           rankList:topList
         })
