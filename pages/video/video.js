@@ -6,16 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    videoList:[],
-    currentId: 58100 // null
+    // 初始化视频导航列表
+    navList:[],
+    currentId: 58100, // null
+    // 初始化下方视频展示列表
+    videoList:[]
   },
 
   // 判断当前点击的导航中的哪一项
   // 通过自定义属性 data-id 进行传参
-  changeId(event){
+  async changeId(event){
     // console.log(event.currentTarget.dataset.id);
     this.setData({
-      currentId:event.currentTarget.dataset.id
+      currentId:event.currentTarget.dataset.id*1,
+      videoList:[]
+    })
+    // 显示 loading 提示框
+    wx.showLoading({
+      title:"正在加载，请稍后... ..."
+    })
+    // 等待请求结束，不加await，此时不会等待请求回来
+    await this.getVideoListData();
+    // 隐藏loading提示框
+    wx.hideLoading();
+  },
+
+  async getVideoListData(){
+    let videoListData = await request("/video/group",{id:this.data.currentId})
+    this.setData({
+      videoList:videoListData.datas
     })
   },
 
@@ -27,16 +46,18 @@ Page({
     const result = await request("/video/group/list");
     //console.log(result);
     this.setData({
-      videoList:result.data.slice(0,10),
+      navList:result.data.slice(0,10),
       
        // 设置当前默认显示下划线的为第一个
-      //currentId:videoList.data[0].id
+      //currentId:navList.data[0].id
     })
-    //console.log(this.data.videoList)
+    //console.log(this.data.navList)
 
+    /*
     // 请求下方视频
     let videoListData = await request('/video/group', { id: 58100})
-    //console.log('videoListData', videoListData) // videoListData {msg: "需要登录", code: 301}
+    console.log('videoListData', videoListData) // navListData {msg: "需要登录", code: 301}
+    */
   },
 
   /**
