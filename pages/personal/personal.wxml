@@ -3,12 +3,12 @@
     <image class="bg" src="/static/images/personal/bgImg2.jpg"></image>
 
 
-    <view class="user-info-box">
+    <view class="user-info-box" bindtap="toLogin">
       <view class="portrait-box">
-        <image class="portrait" src="/static/images/personal/missing-face.png"></image>
+        <image class="portrait" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'/static/images/personal/missing-face.png'}}"></image>
       </view>
       <view class="info-box">
-        <text class="username">游客</text>
+        <text class="username">{{userInfo.nickname?userInfo.nickname:'游客'}}</text>
       </view>
     </view>
 
@@ -54,14 +54,10 @@
   <view class="play-container">
     <view class="recent-play">
       <text>最近播放</text>
-      <scroll-view scroll-x enable-flex>
-        <image src="/static/images/personal/user-bg.jpg"></image>
-        <image src="/static/images/personal/user-bg.jpg"></image>
-        <image src="/static/images/personal/user-bg.jpg"></image>
-        <image src="/static/images/personal/user-bg.jpg"></image>
-        <image src="/static/images/personal/user-bg.jpg"></image>
-        <image src="/static/images/personal/user-bg.jpg"></image>
+      <scroll-view scroll-x enable-flex wx:if="{{playList.length}}">
+        <image src="{{item.song.al.picUrl}}" wx:for="{{playList}}" wx:key="id"></image>
       </scroll-view>
+      <view wx:else class="noData">暂时没有数据</view>
     </view>
     <view class="mine">
       <text>我的音乐</text>
