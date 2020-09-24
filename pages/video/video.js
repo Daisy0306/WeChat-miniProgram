@@ -36,7 +36,7 @@ Page({
 
     // 请求下方视频
     let videoListData = await request('/video/group', { id: 58100})
-    console.log('videoListData',videoListData)
+    //console.log('videoListData', videoListData) // videoListData {msg: "需要登录", code: 301}
   },
 
   /**
