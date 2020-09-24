@@ -64,7 +64,7 @@ Page({
     // 获取用户最近播放记录
     let playListData = await request("/user/record",{uid:this.data.userInfo.userId,type:1})
     this.setData({
-      playList:playListData.weekData.splice(0,10)
+      playList:playListData.weekData
     })
   },
 

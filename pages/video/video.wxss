@@ -1,1 +1,33 @@
 /* pages/video/video.wxss */
+.videoWrapper .topBar{
+  display: flex;
+  padding: 10rpx;
+}
+.videoWrapper .topBar image{
+  width:60rpx;
+  height:60rpx;
+}
+.videoWrapper .topBar .search{
+  height:60rpx;
+  line-height: 60rpx;
+  flex-grow: 1;
+  border:1rpx solid #eee;
+  margin: 0 10rpx;
+}
+.videoWrapper .topBar .placholder{
+  color:#d43c33;
+  text-align: center;
+}
+.videoWrapper .navBar{
+  display: flex;
+  height:100rpx;
+}
+.videoWrapper .navBar .navItem{
+  height:96rpx;
+  white-space: nowrap;
+  line-height: 96rpx;
+  margin: 0 20rpx;
+}
+.videoWrapper .navBar .navItem.active{
+  border-bottom:4rpx solid red;
+}

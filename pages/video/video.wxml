@@ -1,2 +1,13 @@
-<!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<view class="videoWrapper">
+    <!-- 上方搜索框区域 -->
+    <view class="topBar">
+      <image src="/static/images/video/video.jpg" ></image>
+      <input class="search" placeholder="光辉岁月" placeholder-class="placholder"></input>
+      <image src="/static/images/logo.png"></image>
+    </view>
+
+    <!-- 上方导航区域 -->
+    <scroll-view enable-flex scroll-x class="navBar">
+        <view id="{{item.id}}" class="navItem {{currentId===item.id?'active':''}}" wx:for="{{videoList}}" wx:key="id" bindtap="changeId" data-id="{{item.id}}">{{item.name}}</view>
+    </scroll-view>
+</view>

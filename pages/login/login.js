@@ -51,8 +51,8 @@ Page({
 
     // 3. 后端表单验证
     // 发送请求
-    let result = await request("/login/cellphone",{phone,password});
-    console.log(result.profile); //打印用户信息，测试请求结果：密码错误等
+    let result = await request("/login/cellphone",{phone,password,isLogin:true});
+    //console.log("用户信息" + result.profile.stringify()); //打印用户信息，测试请求结果：密码错误等
     // 将用户数据信息保存
     wx.setStorage({
       key:"userInfo",
